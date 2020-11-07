@@ -92,6 +92,7 @@ export class HomeComponent implements OnInit {
   }
 
   filter() {
+    console.log(this.offers[0].image);
     this.carsService.getAll().pipe().subscribe(car => {
       this.offersService.getLenght().subscribe(length => this.offersService.getAll(0, length, `offerId`, `asc`).subscribe(allOffers => {
         const dialogRef = this.dialog.open(HomeFilterOfferDialogComponent, {
