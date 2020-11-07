@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Filter</h1>
+<div mat-dialog-content>
+<mat-list>
+    <mat-list-item><mat-label>Brand</mat-label></mat-list-item>
+  <mat-list-item><mat-select [(ngModel)]="newCars.brand" name="newCars">
+      <mat-option *ngFor="let cars of data.cars" [value]="cars.brand">
+        {{cars.brand}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Model</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.model" name="newCars">
+      <mat-option *ngFor="let cars of selectBrand(newCars.brand)" [value]="cars.model">
+        {{cars.model}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Gas Type</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.gas_type" name="md">
+      <mat-option *ngFor="let cars of selectModel(newCars.model)" [value]="cars.gas_type">
+        {{cars.gas_type}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Body Type</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.body_type" name="md">
+      <mat-option *ngFor="let cars of selectModel(newCars.model)" [value]="cars.body_type">
+        {{cars.body_type}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+</mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Submit</button>
+</div>

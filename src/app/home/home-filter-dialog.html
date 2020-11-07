@@ -1,0 +1,124 @@
+<h1 mat-dialog-title>Filter</h1>
+<div mat-dialog-content>
+<mat-list>
+    <mat-list-item><mat-label>Brand</mat-label></mat-list-item>
+  <mat-list-item><mat-select [(ngModel)]="newCars.brand" name="md">
+      <mat-option *ngFor="let cars of data.cars" [value]="cars.brand">
+        {{cars.brand}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Model</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.model" name="md">
+      <mat-option *ngFor="let cars of selectBrand(newCars.brand)" [value]="cars.model">
+        {{cars.model}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Gas Type</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.gas_type" name="md">
+      <mat-option *ngFor="let cars of selectModel(newCars.model)" [value]="cars.gas_type">
+        {{cars.gas_type}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Body Type</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newCars.body_type" name="md">
+      <mat-option *ngFor="let cars of selectModel(newCars.model)" [value]="cars.body_type">
+        {{cars.body_type}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Min Milleage</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Milleage" [(ngModel)]="minMilleage">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "minMilleage = $event.value"
+  min="0"
+  max="300000"
+  [(ngModel)]="minMilleage"></mat-slider>
+</mat-list-item>
+
+<mat-list-item><mat-label>Max Milleage</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Milleage" [(ngModel)]="maxMilleage">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "maxMilleage = $event.value"
+  min="0"
+  max="300000"
+  [(ngModel)]="maxMilleage"></mat-slider>
+</mat-list-item>
+
+<mat-list-item><mat-label>Min Price</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Value" [(ngModel)]="minValue">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+  <mat-slider
+    (input) = "minValue = $event.value"
+    min="0"
+    max="100000"
+    [(ngModel)]="minValue"></mat-slider>
+  </mat-list-item>
+
+<mat-list-item><mat-label>Max Price</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Value" [(ngModel)]="maxValue">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "maxValue = $event.value"
+  min="0"
+  max="100000"
+  [(ngModel)]="maxValue"></mat-slider>
+</mat-list-item>
+
+
+<mat-list-item><mat-label>Color</mat-label></mat-list-item>
+<mat-list-item><mat-select [(ngModel)]="newOffers.color" name="md">
+      <mat-option *ngFor="let offer of selectColor(newOffers.color)" [value]="offers.body_type">
+        {{offer.color}}
+      </mat-option>
+</mat-select></mat-list-item>
+
+<mat-list-item><mat-label>Production Country</mat-label></mat-list-item>
+<mat-list-item><input matInput type="text" placeholder="Country" [(ngModel)]="prod_country"></mat-list-item>
+
+<mat-list-item> <mat-checkbox [(ngModel)]="englishCar">English Car?</mat-checkbox></mat-list-item>
+<mat-list-item><mat-label>Production Date</mat-label></mat-list-item>
+<mat-list-item> <mat-form-field>
+      
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl] = "date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field></mat-list-item>
+
+<mat-list-item><mat-label>Production Date</mat-label></mat-list-item>
+
+<mat-list-item> <mat-form-field>
+      
+  <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date" [formControl] = "maxDate">
+  <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+  <mat-datepicker #pickerTo></mat-datepicker>
+</mat-form-field></mat-list-item>
+</mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Submit</button>
+</div>

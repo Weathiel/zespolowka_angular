@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Edit user</h1>
+<div mat-dialog-content>
+    <p>
+<mat-form-field >
+            <input matInput placeholder="Change price" [(ngModel)] = "price">
+</mat-form-field>
+</p>
+        <mat-radio-group [(ngModel)]= "archivized" aria-label="Archivized?">
+                <mat-radio-button [value]="true">True</mat-radio-button>
+                <mat-radio-button [value]="false">False</mat-radio-button>
+        </mat-radio-group>        
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Submit</button>
+</div>

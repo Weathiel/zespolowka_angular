@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Edit user</h1>
+<mat-form-field>
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="selectedRole">
+    <mat-option value="ROLE_WORKER">Worker</mat-option>
+    <mat-option value="ROLE_USER">User</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Submit</button>
+</div>

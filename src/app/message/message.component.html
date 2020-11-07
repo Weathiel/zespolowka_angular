@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-title>Send Message</mat-card-title>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item><textarea matInput id="subject" (change)="subjectChange($event.target.value)">Subject</textarea></mat-list-item>
+            <mat-list-item><textarea matInput id="message" (change)="messageChange($event.target.value)">Message</textarea> </mat-list-item>
+            <mat-list-item>
+                <div mat-dialog-actions>
+                    <button mat-button (click)="onClick()">Submit</button>
+                </div>
+            </mat-list-item>
+        </mat-list>
+
+    </mat-card-content>
+</mat-card>

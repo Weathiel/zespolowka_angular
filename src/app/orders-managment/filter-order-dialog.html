@@ -1,0 +1,90 @@
+<h1 mat-dialog-title>Filter</h1>
+<div mat-dialog-content>
+<mat-list>
+    <mat-list-item><mat-label>UserId</mat-label></mat-list-item>
+  <mat-list-item>
+      <mat-form-field>
+    <input matInput type="number" placeholder="userId" [(ngModel)]="userId">
+  </mat-form-field>
+</mat-list-item>
+
+<mat-list-item><mat-label>OrderId</mat-label></mat-list-item>
+  <mat-list-item>
+      <mat-form-field>
+    <input matInput type="number" placeholder="orderId" [(ngModel)]="orderId">
+  </mat-form-field>
+</mat-list-item>
+
+<mat-list-item><mat-label>Min Milleage</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Min Discount" [(ngModel)]="minDiscount">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "minDiscount = $event.value"
+  min="0"
+  max="300000"
+  [(ngModel)]="minDiscount"></mat-slider>
+</mat-list-item>
+
+<mat-list-item><mat-label>Max Milleage</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Max Discount" [(ngModel)]="maxDiscount">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "maxDiscount = $event.value"
+  min="0"
+  max="300000"
+  [(ngModel)]="maxDiscount"></mat-slider>
+</mat-list-item>
+
+<mat-list-item><mat-label>Min Price</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Value" [(ngModel)]="minValue">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+  <mat-slider
+    (input) = "minValue = $event.value"
+    min="0"
+    max="100000"
+    [(ngModel)]="minValue"></mat-slider>
+  </mat-list-item>
+
+<mat-list-item><mat-label>Max Price</mat-label></mat-list-item>
+<mat-list-item>
+  <mat-form-field>
+  <input matInput type="number" placeholder="Value" [(ngModel)]="maxValue">
+</mat-form-field>
+</mat-list-item>
+
+<mat-list-item>
+<mat-slider
+  (input) = "maxValue = $event.value"
+  min="0"
+  max="100000"
+  [(ngModel)]="maxValue"></mat-slider>
+</mat-list-item>
+
+<mat-list-item><mat-form-field>
+    <mat-label>DONE?</mat-label>
+    <mat-select [(value)]="done">
+      <mat-option value=true>TRUE</mat-option>
+      <mat-option value=false>FALSE</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-list-item>
+
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Submit</button>
+</div>

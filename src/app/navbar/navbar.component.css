@@ -1,0 +1,10 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.login-box {
+    max-width: 90%;
+    width: 500px
+}

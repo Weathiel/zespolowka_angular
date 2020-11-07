@@ -1,0 +1,27 @@
+<mat-grid-list cols="4" rows="1" rowHeight="1:1.7" gutterSize="25">
+    <mat-grid-tile *ngFor="let offer of offers">
+        
+        <mat-card>
+            <img mat-card-image src="data:image/jpg;base64,{{offer.image}}">
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item> Brand: {{offer.cars.brand}} </mat-list-item>
+                    <mat-list-item> Model: {{offer.cars.model}} </mat-list-item>
+                    <mat-list-item> Milleage: {{offer.mileage | number: '0.0-0'}} </mat-list-item>
+                    <mat-list-item> Price: {{offer.price | number: '0.0-0'}}</mat-list-item>
+                    <mat-list-item> Production Date: {{offer.production_date | date:'MMM y'}}</mat-list-item>
+                    <mat-list-item *ngIf = "loggedIn"><button mat-raised-button color="primary" (click)="order(offer)">Order</button></mat-list-item>
+                </mat-list>
+            </mat-card-content>
+          </mat-card>
+          
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-toolbar color="white">
+            <mat-toolbar-row>
+                <button mat-raised-button color="primary" (click)="filter()">Filter</button>
+              <span class="example-spacer"></span>
+              <mat-paginator color="primary" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = changePage($event)">
+                </mat-paginator>
+            </mat-toolbar-row>
+    </mat-toolbar>

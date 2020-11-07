@@ -1,0 +1,54 @@
+<mat-table [dataSource]="dataSource" matSort (matSortChange) = "sort($event)" class="mat-elevation-z8">
+        <ng-container matColumnDef="offerId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.offerId}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="cars.brand">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cars.brand}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cars.model">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> model </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cars.model}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="mileage">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Mileage </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mileage | number: '0.0-0'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.price | number: '0.0-0'}} </mat-cell>
+            </ng-container>
+    
+        <ng-container matColumnDef="archivized">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Archivized </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.archivized}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef > Edit </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click) = "edit(element.offerId)">Edit</button> </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="delete(element.offerId)">Delete</button> </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-toolbar class="footer" color="white">
+            <mat-toolbar-row>
+                <button mat-raised-button color="primary" (click)="create()">Add</button>
+                <button mat-raised-button color="primary" (click)="filter()">Filter</button>
+              <span class="example-spacer"></span>
+              <mat-paginator color="primary" [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = changePage($event)">
+                </mat-paginator>
+            </mat-toolbar-row>
+    </mat-toolbar>
+        
