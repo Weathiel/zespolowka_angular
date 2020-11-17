@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
               private currencyService: CurrencyService) {
                 this.authService.currentUser.subscribe(data => {
                   this.loggedIn = !!data;
-                  this.users = data.userId;
                   if ( !!data ) {
+                    this.users = data.userId;
                     if (data.role[0] !== 'ROLE_USER') {
                       this.userRole = true;
                     } else {

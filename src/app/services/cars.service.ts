@@ -11,7 +11,7 @@ export class CarsService {
 
     getAll() {
         // tslint:disable-next-line:max-line-length
-        return this.http.get<Car[]>(this.url.url + `cars/getAll`);
+        return this.http.get<Car[]>(this.url.url + `cars/all`);
     }
 
     getLenght() {

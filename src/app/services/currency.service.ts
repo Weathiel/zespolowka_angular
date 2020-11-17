@@ -19,7 +19,7 @@ export class CurrencyService {
 
 
      getAll() {
-        return this.http.get(this.url.url + `currency`);
+        return this.http.get<Currency[]>(this.url.url + `currency`);
     }
 
     public getCurVal() {

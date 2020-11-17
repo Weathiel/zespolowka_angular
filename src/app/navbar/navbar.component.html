@@ -29,6 +29,13 @@
         <button mat-icon-button matTooltip="Manage users" *ngIf="userRole" routerLink="/management">
       <mat-icon>account_box</mat-icon>
     </button>
+    <button mat-icon-button matTooltip="Login" *ngIf="!loggedIn" routerLink="/login">
+      <mat-icon>login</mat-icon>
+    </button>
+    <button (click)="logout()" mat-icon-button matTooltip="Logout" *ngIf="loggedIn" routerLink="/home">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    
         
 
     </mat-toolbar-row>

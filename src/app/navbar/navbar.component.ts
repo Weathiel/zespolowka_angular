@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
               private userService: UserService,
               private currencyService: CurrencyService) {
     this.authService.currentUser.subscribe(data => {
-      console.log(data);
       this.loggedIn = !!data;
       if ( !!data ) {
         if (data.role[0] !== 'ROLE_USER') {
@@ -41,9 +40,7 @@ export class NavbarComponent implements OnInit {
         this.userRole = null;
       }
     });
-    this.currencyService.getAll().pipe(first()).subscribe((cur: Currency[]) => {
-      this.currencies = cur;
-    });
+
   }
 
   ngOnInit() {
