@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { first, catchError, take } from 'rxjs/operators';
-import { CurrencyService } from '../services/currency.service';
 import { Currency } from '../currency';
 
 @Component({
@@ -26,8 +25,7 @@ export class NavbarComponent implements OnInit {
               private iconRegistry: MatIconRegistry,
               private sanitizer: DomSanitizer,
               private authService: AuthenticationService,
-              private userService: UserService,
-              private currencyService: CurrencyService) {
+              private userService: UserService) {
     this.authService.currentUser.subscribe(data => {
       this.loggedIn = !!data;
       if ( !!data ) {
@@ -49,9 +47,5 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.userRole = null;
-  }
-
-  onCurrencyChange(cur) {
-    this.currencyService.getCurr().next(cur.value);
   }
 }

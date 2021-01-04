@@ -7,7 +7,6 @@ import { OffersService } from '../services/offers.service';
 import { Car } from '../car';
 import { CarsService } from '../services/cars.service';
 import { FormControl, FormBuilder } from '@angular/forms';
-import { CurrencyService } from '../services/currency.service';
 
 @Component({
   selector: 'app-offer-managment',
@@ -29,15 +28,11 @@ export class OfferManagmentComponent implements OnInit {
 
   constructor(private offersService: OffersService,
               private carsService: CarsService,
-              public dialog: MatDialog,
-              private currencyService: CurrencyService) {
+              public dialog: MatDialog) {
     offersService.getAll(this.pageIndex, this.pageSize, this.sortBy, this.sortOrder).subscribe(data => {
       this.offers = data;
       this.offers.every(back => back.priceBack = back.price);
       this.dataSource = new MatTableDataSource(this.offers);
-      currencyService.getCurr().subscribe(dat => {
-        this.offers.every(dats => dats.price = dats.priceBack / dat.exchange_rate);
-      });
     });
    }
 
@@ -97,13 +92,6 @@ export class OfferManagmentComponent implements OnInit {
       const offer = this.offers.find(ele => ele.offerId === id);
       offer.price = role.price;
       offer.archivized = role.archivized;
-      this.dataSource.data.every(dedit => {
-        if (dedit.offerId === id) {
-          dedit.price = role.price / this.currencyService.getCurVal().exchange_rate;
-          dedit.priceBack = role.price;
-          dedit.archivized = role.archivized;
-        }
-      });
       this.offersService.update(id, offer).pipe(first()).subscribe();
     });
   }

@@ -49,7 +49,7 @@ export class UserManagementComponent implements OnInit {
       width: '350px'
     });
     dialogRef.afterClosed().pipe(first()).subscribe(role => {
-      const user = this.users.find(ele => ele.userId === id);
+      const user = this.users.find(ele => ele.id === id);
       switch (role) {
         case 'ROLE_WORKER':
           user.roleId = 2;
@@ -91,7 +91,7 @@ export class UserManagementComponent implements OnInit {
     dialogRef.afterClosed().pipe(first()).subscribe((data: boolean) => {
       if (data === true) { this.userService.delete(id).subscribe();
                            this.dataSource.data = this.dataSource.data.filter(cb => {
-        if (cb.userId !== id) {
+        if (cb.id !== id) {
           return cb;
         }
       });
@@ -138,7 +138,6 @@ export class FilterUserDialogComponent {
         if ( (searchedUsers.username === this.username || this.username == null || this.username === '') &&
              (searchedUsers.lastName === this.lastname || this.lastname == null || this.lastname === '') &&
              (searchedUsers.firstName === this.firstname || this.firstname == null || this.firstname === '') ) {
-             
             return searchedUsers;
         }
       });

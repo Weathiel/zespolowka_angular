@@ -14,7 +14,6 @@ import { OrdersService } from '../services/orders.service';
 import { Contract } from '../contract';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Currency } from '../currency';
-import { CurrencyService } from '../services/currency.service';
 
 @Component({
   selector: 'app-home',
@@ -35,12 +34,11 @@ export class HomeComponent implements OnInit {
               private carsService: CarsService,
               private ordersService: OrdersService,
               public dialog: MatDialog,
-              private authService: AuthenticationService,
-              private currencyService: CurrencyService) {
+              private authService: AuthenticationService) {
                 this.authService.currentUser.subscribe(data => {
                   this.loggedIn = !!data;
                   if ( !!data ) {
-                    this.users = data.userId;
+                    this.users = data.id;
                     if (data.role[0] !== 'ROLE_USER') {
                       this.userRole = true;
                     } else {
@@ -58,12 +56,6 @@ export class HomeComponent implements OnInit {
                       return cafil;
                     }
                   });
-                  this.offers.every(ca => ca.priceBack = ca.price);
-                  this.currencyService.getCurr().subscribe(curVal => {
-                    this.offers.every(datCur => {
-                      datCur.price = datCur.priceBack / curVal.exchange_rate;
-                    });
-                   });
                   });
               }
 
@@ -84,7 +76,8 @@ export class HomeComponent implements OnInit {
     const newContract = new Contract();
     newOrder.discount = 0;
     newOrder.offerId = offer.offerId;
-    newOrder.userId = this.authService.currentUserValue.userId;
+    newOrder.userId = this.authService.currentUserValue.id;
+    console.log(this.authService.currentUserValue);
     newContract.done = false;
     newContract.deposit = 0;
     newOrder.contract = newContract;
@@ -178,7 +171,6 @@ export class HomeFilterOfferDialogComponent {
                         return searchOffer;
                       }
                       const prodDate = new Date(searchOffer.production_date);
-                      // console.log(prodDate);
                       if (this.date.value == null || this.date.value <= prodDate) {
                         if (this.maxDate.value == null || this.maxDate.value >= prodDate) {
                           return searchOffer;

@@ -18,10 +18,10 @@ import { AlertComponent } from './alert/alert.component';
 import { UserManagementComponent, EditUserDialogComponent, FilterUserDialogComponent } from './user-management/user-management.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { ManagementDialogComponent } from './management-dialog/management-dialog.component';
+// tslint:disable-next-line:max-line-length
 import { OrdersManagmentComponent, EditOrdersDialogComponent, FilterOrdersDialogComponent } from './orders-managment/orders-managment.component';
 import { OfferManagmentComponent,
    EditOfferDialogComponent, CreateOfferDialogComponent, FilterOfferDialogComponent } from './offer-managment/offer-managment.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MessageComponent } from './message/message.component';
 import { MessageService } from './services/message.service';
 import { CarsManagmentComponent, CreateCarsDialogComponent, FilterCarsDialogComponent } from './cars-managment/cars-managment.component';
@@ -42,7 +42,6 @@ import { CarsManagmentComponent, CreateCarsDialogComponent, FilterCarsDialogComp
     OfferManagmentComponent,
     EditOfferDialogComponent,
     CreateOfferDialogComponent,
-    EditProfileComponent,
     FilterOfferDialogComponent,
     HomeFilterOfferDialogComponent,
     MessageComponent,
